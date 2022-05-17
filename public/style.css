@@ -13,6 +13,7 @@ body {
   padding: 0;
   margin: 0;
   background-color: #0b2434;
+  font-family: "Karla", sans-serif;
 }
 
 input,
@@ -31,13 +32,14 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .dice {
   display: grid;
   width: 100%;
   padding: 0 35px;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template: auto / repeat(5, 1fr);
   gap: 18px;
 }
 
@@ -55,9 +57,29 @@ main {
 }
 
 .die__value {
-  font-family: "Karla", sans-serif;
   font-weight: 700;
   line-height: 1.5rem;
   font-size: 1.5rem;
   color: #2b283a;
+}
+
+.roll {
+  width: 110px;
+  height: 40px;
+  margin-top: 31px;
+  color: #ffffff;
+  background: #5035ff;
+  box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+  border: none;
+  border-radius: 4px;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.roll:focus {
+  outline: none;
+}
+
+.roll:active {
+  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }

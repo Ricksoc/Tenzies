@@ -8,13 +8,18 @@ export default function App() {
 
   const [diceValues, setDiceValues] = useState(allNewDice());
 
-  const dice = diceValues.map((value, index) => {
+  const diceElements = diceValues.map((value, index) => {
     return <Die key={index} value={value} />;
   });
 
+  const rollDice = () => setDiceValues(allNewDice());
+
   return (
     <main>
-      <div className="dice">{dice}</div>
+      <div className="dice">{diceElements}</div>
+      <button className="roll" onClick={rollDice}>
+        Roll
+      </button>
     </main>
   );
 }
