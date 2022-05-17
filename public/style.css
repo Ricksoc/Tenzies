@@ -46,7 +46,6 @@ main {
 .die {
   height: 50px;
   width: 50px;
-  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
