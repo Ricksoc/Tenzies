@@ -35,6 +35,24 @@ main {
   flex-direction: column;
 }
 
+.title {
+  color: #2b283a;
+  font-size: 2rem;
+  letter-spacing: -0.03;
+  margin-bottom: 8px;
+}
+
+.description {
+  margin-top: 8px;
+  margin-bottom: 31px;
+  width: 300px;
+  text-align: center;
+  color: #4A4E74;
+  font-weight: 400;
+  letter-spacing: -0.03;
+
+}
+
 .dice {
   display: grid;
   width: 100%;

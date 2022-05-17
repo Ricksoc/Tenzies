@@ -23,6 +23,16 @@ export default function App() {
     });
   }
 
+  function rollDice() {
+    setDiceArray((prevArray) => {
+      return prevArray.map((die) => {
+        return die.isHeld
+          ? die
+          : { ...die, value: Math.ceil(Math.random() * 6) };
+      });
+    });
+  }
+
   const [diceArray, setDiceArray] = useState(allNewDice());
 
   const diceElements = diceArray.map((die) => {
@@ -36,10 +46,13 @@ export default function App() {
     );
   });
 
-  const rollDice = () => setDiceArray(allNewDice());
-
   return (
     <main>
+      <h1 className="title">Tenzies</h1>
+      <p className="description">
+        Roll until all dice are the same. Click each die to freeze it at its
+        current value between rolls.
+      </p>
       <div className="dice">{diceElements}</div>
       <button className="roll" onClick={rollDice}>
         Roll
