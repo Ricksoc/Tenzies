@@ -34,6 +34,17 @@ export default function App() {
   }
 
   const [diceArray, setDiceArray] = useState(allNewDice());
+  const [tenzies, setTenzies] = useState(false);
+
+  useEffect(() => {
+    if (
+      diceArray.every((die) => die.isHeld) &&
+      diceArray.every((die) => die.value === diceArray[0].value)
+    ) {
+      setTenzies(true);
+      console.log("You won!");
+    }
+  }, [diceArray]);
 
   const diceElements = diceArray.map((die) => {
     return (
@@ -55,7 +66,7 @@ export default function App() {
       </p>
       <div className="dice">{diceElements}</div>
       <button className="roll" onClick={rollDice}>
-        Roll
+        {tenzies ? "New Game" : "Roll"}
       </button>
     </main>
   );
