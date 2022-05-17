@@ -15,10 +15,25 @@ export default function App() {
     return diceArray;
   }
 
+  function holdDice(id) {
+    setDiceArray((prevArray) => {
+      return prevArray.map((die) => {
+        return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
+      });
+    });
+  }
+
   const [diceArray, setDiceArray] = useState(allNewDice());
 
   const diceElements = diceArray.map((die) => {
-    return <Die key={die.id} value={die.value} isHeld={die.isHeld} />;
+    return (
+      <Die
+        key={die.id}
+        value={die.value}
+        isHeld={die.isHeld}
+        onClick={() => holdDice(die.id)}
+      />
+    );
   });
 
   const rollDice = () => setDiceArray(allNewDice());
