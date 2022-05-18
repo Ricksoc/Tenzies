@@ -1,6 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
+import Confetti from "react-dom-confetti";
 import Die from "./Die";
+
+// Confetti package config
+const config = {
+  angle: 90,
+  spread: 180,
+  startVelocity: 40,
+  elementCount: 70,
+  dragFriction: 0.12,
+  duration: 3000,
+  stagger: 3,
+  width: "10px",
+  height: "10px",
+  perspective: "500px",
+  colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
+};
 
 export default function App() {
   function allNewDice() {
@@ -59,6 +75,7 @@ export default function App() {
 
   return (
     <main>
+      <Confetti active={tenzies} config={config} />
       <h1 className="title">Tenzies</h1>
       <p className="description">
         Roll until all dice are the same. Click each die to freeze it at its
