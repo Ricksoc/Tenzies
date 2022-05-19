@@ -19,6 +19,7 @@ const config = {
 };
 
 export default function App() {
+  // Create 10 new dice with random values between 1 and 6
   function allNewDice() {
     const diceArray = [];
     for (let i = 0; i < 10; i++) {
@@ -31,6 +32,7 @@ export default function App() {
     return diceArray;
   }
 
+  // Stop value of dice changing with rollDice
   function holdDice(id) {
     setDiceArray((prevArray) => {
       return prevArray.map((die) => {
@@ -39,6 +41,7 @@ export default function App() {
     });
   }
 
+  // Change value of all dice for which isHeld = false
   function rollDice() {
     setDiceArray((prevArray) => {
       return prevArray.map((die) => {
@@ -49,9 +52,15 @@ export default function App() {
     });
   }
 
+  function newGame() {
+    setDiceArray(allNewDice());
+    setTenzies(false);
+  }
+
   const [diceArray, setDiceArray] = useState(allNewDice());
   const [tenzies, setTenzies] = useState(false);
 
+  // Check for win condition
   useEffect(() => {
     if (
       diceArray.every((die) => die.isHeld) &&
@@ -82,7 +91,7 @@ export default function App() {
         current value between rolls.
       </p>
       <div className="dice">{diceElements}</div>
-      <button className="roll" onClick={rollDice}>
+      <button className="roll" onClick={tenzies ? newGame : rollDice}>
         {tenzies ? "New Game" : "Roll"}
       </button>
     </main>
