@@ -43,6 +43,7 @@ export default function App() {
 
   // Change value of all dice for which isHeld = false
   function rollDice() {
+    setNoRolls((prevRolls) => prevRolls + 1);
     setDiceArray((prevArray) => {
       return prevArray.map((die) => {
         return die.isHeld
@@ -55,10 +56,12 @@ export default function App() {
   function newGame() {
     setDiceArray(allNewDice());
     setTenzies(false);
+    setNoRolls(0);
   }
 
   const [diceArray, setDiceArray] = useState(allNewDice());
   const [tenzies, setTenzies] = useState(false);
+  const [noRolls, setNoRolls] = useState(0);
 
   // Check for win condition
   useEffect(() => {
@@ -91,9 +94,15 @@ export default function App() {
         current value between rolls.
       </p>
       <div className="dice">{diceElements}</div>
-      <button className="roll" onClick={tenzies ? newGame : rollDice}>
-        {tenzies ? "New Game" : "Roll"}
-      </button>
+      <div className="rolls">
+        <button className="roll" onClick={tenzies ? newGame : rollDice}>
+          {tenzies ? "New Game" : "Roll"}
+        </button>
+        <div className="counter">
+          <span className="counter__text">No Rolls: </span>
+          <span className="counter__count">{noRolls}</span>
+        </div>
+      </div>
     </main>
   );
 }
