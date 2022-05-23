@@ -60,6 +60,13 @@ main {
   gap: 18px;
 }
 
+@media screen and (max-width: 420px) {
+  .dice {
+    padding: 0 15px;
+    gap: 10px;
+  }
+}
+
 .die {
   padding: 10px;
   height: 50px;
@@ -105,7 +112,9 @@ main {
   align-self: flex-end;
 }
 
-.four, .five, .six  {
+.four,
+.five,
+.six {
   justify-content: space-between;
 }
 
@@ -117,7 +126,6 @@ main {
   display: flex;
   justify-content: space-between;
 }
-
 
 .die__value {
   font-weight: 700;
